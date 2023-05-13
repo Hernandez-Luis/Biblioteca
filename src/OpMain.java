@@ -31,17 +31,25 @@ public class OpMain {
                     profesor = registro.profesor(scanner);
                     break;
                 case 4, 7:
-                    mostrar.libros(libros);
-                    registro.prestamo(scanner,libros,profesor,alumno,prestamos);
+                    if(!usuario.isEmpty() && (!alumno.isEmpty()) || !profesor.isEmpty() ){
+                        mostrar.libros(libros);
+                        registro.prestamo(scanner,libros,profesor,alumno,prestamos);
+                    }
                     break;
                 case 5:
-                    registro.devolver(libros,alumno,profesor,scanner);
+                    if(!usuario.isEmpty() && (!alumno.isEmpty()) || !profesor.isEmpty() ){
+                        registro.devolver(libros,alumno,profesor,scanner);
+                    }
                     break;
                 case 6:
-                    System.out.println("La libreria te cobrara " + calcular.precio(scanner) + " pesos");
+                    if(!usuario.isEmpty() && (!alumno.isEmpty()) || !profesor.isEmpty() ) {
+                        System.out.println("La libreria te cobrara " + calcular.precio(scanner) + " pesos");
+                    }
                     break;
                 case 8:
-                    System.out.println("Debes pagar " + calcular.precio(scanner) + " pesos");
+                    if(!usuario.isEmpty() && (!alumno.isEmpty()) || !profesor.isEmpty() ) {
+                        System.out.println("Debes pagar " + calcular.precio(scanner) + " pesos");
+                    }
                     break;
                 case 9:
                      libros = registro.libros(scanner);

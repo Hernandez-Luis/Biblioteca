@@ -169,41 +169,46 @@ public class Registro {
         System.out.println("Ingresa el tipo de usuario: ");
         String usuario = scanner.next();
         if (usuario.equals("Alumno")){
-            while (alm == -1){
-                System.out.println("Ingresa su nombre: ");
-                String nombre = scanner.next();
-                alm = validaciones.buscarAlumnos(nombre,Alumnos);
-                if(nombre.equals("Salir")) alm = -1;
-            }
-            mostrar.libros(libros);
-            System.out.println("Ingresa el nombre del libro que se desea devolver: ");
-            String nombreLibro = scanner.next();
+            if (!usuario.isEmpty()){
+                while (alm == -1){
+                    System.out.println("Ingresa su nombre: ");
+                    String nombre = scanner.next();
+                    alm = validaciones.buscarAlumnos(nombre,Alumnos);
+                    if(nombre.equals("Salir")) alm = -1;
+                }
+                mostrar.libros(libros);
+                System.out.println("Ingresa el nombre del libro que se desea devolver: ");
+                String nombreLibro = scanner.next();
 
-            x = validaciones.buscarLibro(libros,nombreLibro);
-            if (x!=-1){
-                prestados = libros.get(x).getNumEjemplares();
-                cantLib = Alumnos.get(x).getCantLibro();
-                Alumnos.get(alm).setCantLibro(cantLib-1);
-                libros.get(x).setNumEjemplares(prestados+1);
+                x = validaciones.buscarLibro(libros,nombreLibro);
+                if (x!=-1){
+                    prestados = libros.get(x).getNumEjemplares();
+                    cantLib = Alumnos.get(x).getCantLibro();
+                    Alumnos.get(alm).setCantLibro(cantLib-1);
+                    libros.get(x).setNumEjemplares(prestados+1);
+                }
             }
+            else System.out.println("No hay alumnos registrados");
         }
         else {
-            while (alm == -1){
-                System.out.println("Ingresa su nombre: ");
-                String nombre = scanner.next();
-                alm = validaciones.buscarProfe(nombre,profesor);
-                if(nombre.equals("Salir")) alm = -1;
-            }
-            mostrar.libros(libros);
-            System.out.println("Ingresa el nombre del libro que se desea devolver: ");
-            String nombreLibro = scanner.next();
+            if (!profesor.isEmpty()){
+                while (alm == -1){
+                    System.out.println("Ingresa su nombre: ");
+                    String nombre = scanner.next();
+                    alm = validaciones.buscarProfe(nombre,profesor);
+                    if(nombre.equals("Salir")) alm = -1;
+                }
+                mostrar.libros(libros);
+                System.out.println("Ingresa el nombre del libro que se desea devolver: ");
+                String nombreLibro = scanner.next();
 
-            x = validaciones.buscarLibro(libros,nombreLibro);
-            if (x!=-1){
-                prestados = libros.get(x).getNumEjemplares();
-                cantLib = Alumnos.get(x).getCantLibro();
-                Alumnos.get(alm).setCantLibro(cantLib-1);
-                libros.get(x).setNumEjemplares(prestados+1);
+                x = validaciones.buscarLibro(libros,nombreLibro);
+                if (x!=-1){
+                    prestados = libros.get(x).getNumEjemplares();
+                    cantLib = Alumnos.get(x).getCantLibro();
+                    Alumnos.get(alm).setCantLibro(cantLib-1);
+                    libros.get(x).setNumEjemplares(prestados+1);
+                }
             }
         }
     }
